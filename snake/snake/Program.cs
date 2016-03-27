@@ -25,22 +25,20 @@ namespace snake
             VerticalLine line4 = new VerticalLine(0, 24, 78, '#');
             line4.Draw();
 
-            Point p = new Point(4, 5, 'O');
-            snake snake = new snake(p, 10, Direction.Rigth);
+            Point p = new Point(4, 5, 'o');
+            snake snake = new snake(p, 4, Direction.Rigth);
             snake.Draw();
 
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    snake.HandleKey(key.Key);
+                }
+                Thread.Sleep(100);
+                snake.Move();
+            }
 
          
             Console.ReadLine();
